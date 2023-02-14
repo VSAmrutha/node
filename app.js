@@ -1,1 +1,35 @@
-console.log('E-Commerce API');
+const express=require('express');
+//this dotenv helps to use .env file
+require('dotenv').config()
+//expres async errors will handle any error which comes in the route, and invoke errorhandler.js
+require('express-async-errors')
+const authRouter=require('./routes/authRoutes')
+const notFoundMiddleware=require("./middleware/not-found")
+const errorHandlerMiddleware=require("./middleware/error-handler")
+const app=express();
+const morgan=require('morgan')
+const connectDB=require("./db/connect")
+// morgan will be the routes which were hit,its like a logger
+app.use(morgan('tiny'))
+//express.json will provide req.body
+app.use(express.json())
+
+app.get('/',(req,res)=>{
+    res.send('E-com API')
+})
+app.use('/api/v1/auth',authRouter)
+// not found should be coming before error handler as error handler will be only invoked from a valid route, like when we have an error
+app.use(notFoundMiddleware)
+app.use(errorHandlerMiddleware)
+
+const port=process.env.port || 3000
+const start=async()=>{
+    try{
+        await connectDB(process.env.MONGO_URI)
+    app.listen(port,console.log(`Listening to the port ${port}`))
+    }catch(err){
+        console.log(err)
+    }
+    
+}
+start()
