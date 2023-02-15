@@ -3,6 +3,7 @@ const express=require('express');
 require('dotenv').config()
 //expres async errors will handle any error which comes in the route, and invoke errorhandler.js
 require('express-async-errors')
+const cookieParser=require('cookie-parser')
 const authRouter=require('./routes/authRoutes')
 const notFoundMiddleware=require("./middleware/not-found")
 const errorHandlerMiddleware=require("./middleware/error-handler")
@@ -11,10 +12,18 @@ const morgan=require('morgan')
 const connectDB=require("./db/connect")
 // morgan will be the routes which were hit,its like a logger
 app.use(morgan('tiny'))
+
 //express.json will provide req.body
 app.use(express.json())
-
+//app.use(cookieParser(process.env.JWT_SECRET))
+app.use(cookieParser())
 app.get('/',(req,res)=>{
+    res.send('E-com API')
+})
+app.get('/api/v1',(req,res)=>{
+    console.log(req)
+    console.log("signedCookies*********=>",req.signedCookies.cookies)
+    console.log("cookies*********=>",req.cookies)
     res.send('E-com API')
 })
 app.use('/api/v1/auth',authRouter)
