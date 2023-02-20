@@ -37,7 +37,6 @@ const deleteProduct=async(req,res)=>{
     res.status(StatusCodes.OK).json({msg:'Success! Product Removed..'})
 }
 const uploadImage=async(req,res)=>{
-    console.log(req.files)
     if(!req.files){
         throw new CustomError.BadRequestError('No file Uploaded')
     }

@@ -8,7 +8,7 @@
         "price": 2599,
         "image": "https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160",
         "amount": 34,
-        "product": "6126ad3424d2bd09165a68c8"
+        "product": "63f1cc9084c5095a2d61d776"
       }
     ]
   },
@@ -21,14 +21,14 @@
         "price": 2699,
         "image": "https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160",
         "amount": 3,
-        "product": "6126ad3424d2bd09165a68c7"
+        "product": "63f311ee37549e2d08dd6c61"
       },
       {
         "name": "chair",
         "price": 2999,
         "image": "https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160",
         "amount": 2,
-        "product": "6126ad3424d2bd09165a68c4"
+        "product": "63f1cc9084c5095a2d61d776"
       }
     ]
   }

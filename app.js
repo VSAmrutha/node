@@ -9,6 +9,7 @@ const authRouter=require('./routes/authRoutes')
 const userRouter=require('./routes/userRoutes')
 const productRouter=require('./routes/productRoutes');
 const reviewRouter=require('./routes/reviewRoutes')
+const orderRouter=require('./routes/orderRoutes')
 const notFoundMiddleware=require("./middleware/not-found")
 const errorHandlerMiddleware=require("./middleware/error-handler")
 const app=express();
@@ -27,15 +28,16 @@ app.get('/',(req,res)=>{
     res.send('E-com API')
 })
 app.get('/api/v1',(req,res)=>{
-    console.log(req)
-    console.log("signedCookies*********=>",req.signedCookies)
-    console.log("cookies*********=>",req.cookies)
+    //console.log(req)
+    //console.log("signedCookies*********=>",req.signedCookies)
+    //console.log("cookies*********=>",req.cookies)
     res.send('E-com API')
 })
 app.use('/api/v1/auth',authRouter);
 app.use('/api/v1/users',userRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/reviews', reviewRouter)
+app.use('/api/v1/orders', orderRouter)
 // not found should be coming before error handler as error handler will be only invoked from a valid route, like when we have an error
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)

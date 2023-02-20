@@ -11,7 +11,6 @@ const authenticateUser=async(req,res,next)=>{
     try{
         const {userId,name,role}=isTokenValid({token})
         req.user={name,userId,role}
-        console.log(userId,name,role)
         next()
     }
     catch(err){
